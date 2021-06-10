@@ -3,4 +3,11 @@
     <string name ="tasks_app">My Task </string>
     <string name="description">Description</string>
     <string name="title">Title</string>
+    <string name="addTitle">Add Title</string>
+    <string name="task">Task</string>
+    <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
+    <string name="edit_description">Edit Task</string>
+    <string name="add">Add</string>
+    <string name="createtask">Create Task</string>
 </resources>

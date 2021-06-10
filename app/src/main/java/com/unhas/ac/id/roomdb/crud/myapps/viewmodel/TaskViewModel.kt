@@ -10,6 +10,7 @@ import com.unhas.ac.id.roomdb.crud.myapps.db.TaskRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class TaskViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -33,5 +34,32 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
         super.onCleared()
         taskJob.cancel()
     }
+
+    fun createTasks(
+        text: String,
+        text1: String
+
+    ) {
+        uiScope.launch {
+            repository.insertTask(Task(0, text, text1))
+        }
+    }
+
+    fun getData():LiveData<List<Task>>{
+        return listTasks
+    }
+
+    fun removeTask(task: Task) {
+        uiScope.launch {
+            repository.deleteTask(task)
+        }
+    }
+
+    fun updateTask(task: Task) {
+        uiScope.launch {
+            repository.updateTask(task)
+        }
+    }
+
 
 }
