@@ -3,6 +3,8 @@ package com.unhas.ac.id.roomdb.crud.myapps
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
@@ -79,6 +81,51 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_list,menu)
+        if (menu != null) {
+            search(menu)
+        }
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(items: MenuItem): Boolean {
+        return super.onOptionsItemSelected(items)
+    }
+    private fun search(menu: Menu){
+        val items = menu?.findItem(R.id.search)
+
+        val searchView = items?.actionView as androidx.appcompat.widget.SearchView?
+        searchView?.isSubmitButtonEnabled = true
+
+        searchView?.setOnQueryTextListener(
+            object: androidx.appcompat.widget.SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(submit: String?): Boolean {
+                    if(submit != null){
+                        getTasks(submit)
+                    }
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if(newText != null){
+                        getTasks(newText)
+                    }
+                    return true
+                }
+            }
+        )
+
+    }
+
+    private fun getTasks(searchTasks: String){
+        var searchTasks = searchTasks
+        searchTasks = "%$searchTasks%"
+
+        taskModel.search(searchTasks)?.observe(this, Observer {
+            viewAdapter.submitList(it)
+        })
     }
 
 }

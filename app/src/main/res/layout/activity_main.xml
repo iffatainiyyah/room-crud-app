@@ -36,17 +36,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <ImageView
                 android:id="@+id/btn_newtask"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="150dp"
-                android:layout_marginEnd="50dp"
-                android:background="@color/black2"
+                android:layout_marginTop="120dp"
+                android:layout_marginEnd="35dp"
                 android:padding="5dp"
-                android:text="@string/add"
-                android:textColor="@color/white"
+                app:srcCompat="@drawable/addicon"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="@+id/Titleapps" />
 

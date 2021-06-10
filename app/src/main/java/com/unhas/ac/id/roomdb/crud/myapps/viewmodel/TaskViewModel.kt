@@ -61,5 +61,9 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun search(title: String):LiveData<List<Task>>?{
+        return repository.search(title)
+    }
+
 
 }

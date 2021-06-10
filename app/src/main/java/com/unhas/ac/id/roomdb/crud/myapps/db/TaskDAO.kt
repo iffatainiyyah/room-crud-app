@@ -17,4 +17,8 @@ interface TaskDAO {
 
     @Delete
     fun delete(task: Task)
+
+    @Query("SELECT * FROM task WHERE title LIKE :title")
+    fun search(title: String) : LiveData<List<Task>>
+
 }

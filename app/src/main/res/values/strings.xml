@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyApps</string>
+    <string name="app_name">Task Apps</string>
     <string name ="tasks_app">My Task </string>
     <string name="description">Description</string>
     <string name="title">Title</string>
